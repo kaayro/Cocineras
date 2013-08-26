@@ -1,6 +1,7 @@
 var serverFile='http://192.168.1.64/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
 $(function(){
     cargarTlayudas();
+    listenerComentarios = setInterval(function(){comentarios();},500);
     //Tlayudas Preparadas
     $(document).hammer().on("tap",'.preparada',function(){
         var p=$(this).parent().attr('tlayuda');
@@ -8,8 +9,7 @@ $(function(){
     });
     //Tlayudas Listas
     $(document).hammer().on("tap",'.lista',function(){
-        isReady=$(this).parent().children('.preparada').size();
-        alert(isReady);
+        isReady=$(this).parent().children('.ready').size();
         if(isReady>0){
             var p=$(this).parent().attr('tlayuda');
             calentada(p,$(this));
@@ -37,13 +37,12 @@ function syncTlayudas(){
                 exists=true;
             });
             if(!exists)
-                $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><button class="preparada">Listo</button>'+tlay[i].producto+'<button class="lista">Listo</button></li>');
+                $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><button class="preparada">Listo</button>'+tlay[i].producto+'<button class="lista">Listo</button><span class="comments"></span></li>');
         }
     });
 }
 
 function preparada(tid,obj){
-    alert();
     $.ajax({
         type: "POST",
         url: serverFile,
@@ -63,6 +62,19 @@ function calentada(tid,obj){
     }).done(function(done){
         if(done==1){
             obj.parent('li').remove();
+        }
+    });
+}
+
+function comentarios(){
+    $.ajax({
+        type: "POST",
+        url: serverFile,
+        data: "fnc=getTlayudaComents"
+    }).done(function(done){
+        done = JSON.parse(done);
+        for(i=0;i<done.length;i++){
+            $('li[tlayuda='+done[i].tlaId+'] span.comments').html('').append(done[i].tipo+' '+done[i].cantidad+' '+done[i].ingrediente);
         }
     });
 }
