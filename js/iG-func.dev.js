@@ -8,8 +8,12 @@ $(function(){
     });
     //Tlayudas Listas
     $(document).hammer().on("tap",'.lista',function(){
-        var p=$(this).parent().attr('tlayuda');
-        calentada(p,$(this));
+        isReady=$(this).parent().children('.preparada').size();
+        alert(isReady);
+        if(isReady>0){
+            var p=$(this).parent().attr('tlayuda');
+            calentada(p,$(this));
+        }
     });
 });
 
