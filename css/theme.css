@@ -1,0 +1,8 @@
+html,body{margin:0;padding:0;width:100%;height:100%;}
+
+#home {margin:0;padding:0;width:100%;height:100%;background-color:#333;}
+#home ul{margin:0;padding:0;list-style:none;}
+#home ul li{margin: 2px 0;padding: 10px;background-color:#fff;}
+#home ul li button{margin:0;padding:5px;background-color:#0aa000;color:#fff;}
+#home ul li button.lista{float:right;}
+#home ul li button.ready{background-color:#aa0000;}
