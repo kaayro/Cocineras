@@ -73,8 +73,9 @@ function comentarios(){
         data: "fnc=getTlayudaComents"
     }).done(function(done){
         done = JSON.parse(done);
-        for(i=0;i<done.length;i++){
+        alert(done);
+        /*for(i=0;i<done.length;i++){
             $('li[tlayuda='+done[i].tlaId+'] span.comments').html('').append(done[i].tipo+' '+done[i].cantidad+' '+done[i].ingrediente);
-        }
+        }*/
     });
 }
