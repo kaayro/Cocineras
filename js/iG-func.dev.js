@@ -1,4 +1,4 @@
-var serverFile='http://192.168.1.64/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
+var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
 $(function(){
     cargarTlayudas();
     listenerComentarios = setInterval(function(){comentarios();},500);
@@ -72,10 +72,9 @@ function comentarios(){
         url: serverFile,
         data: "fnc=getTlayudaComents"
     }).done(function(done){
-        //done = JSON.parse(done);
-        alert(done);
-        /*for(i=0;i<done.length;i++){
+        done = JSON.parse(done);
+        for(i=0;i<done.length;i++){
             $('li[tlayuda='+done[i].tlaId+'] span.comments').html('').append(done[i].tipo+' '+done[i].cantidad+' '+done[i].ingrediente);
-        }*/
+        }
     });
 }
