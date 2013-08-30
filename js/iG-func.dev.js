@@ -26,11 +26,13 @@ function cargarTlayudas(){
 }
 
 function syncTlayudas(){
+    alert();
     $.ajax({
         type: "POST",
         url: serverFile,
         data: "fnc=getSyncTlayudas"
     }).done(function(tlay){
+        alert(tlay);
         tlay = JSON.parse(tlay);
         //alert(tlay);
         for(i=0;i<tlay.length;i++){
