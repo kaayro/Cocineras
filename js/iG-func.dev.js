@@ -20,7 +20,7 @@ $(function(){
 
 function cargarTlayudas(){
     //Obtener Tlayudas Listadas
-    syncTlayudas();
+    var listenarTlay = setInterval(function(){syncTlayudas();},5000);
 }
 
 function syncTlayudas(){
