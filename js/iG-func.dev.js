@@ -84,7 +84,7 @@ function comentarios(){
             data: "fnc=getTlayudaComents&tlays="+tlays
         }).done(function(done){
             done = JSON.parse(done);
-            alert(done.length);
+            alert(done[0].length);
             for(i=0;i<done.length;i++){
                 $('li[tlayuda='+done[i][0].tlaId+'] td.comments').html('').append(done[i][0].tipo+' '+done[i][0].cantidad+' '+done[i][0].ingrediente);
             }
