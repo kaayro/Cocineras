@@ -21,18 +21,16 @@ $(function(){
 
 function cargarTlayudas(){
     //Obtener Tlayudas Listadas
-    //listenarTlay = setInterval(function(){syncTlayudas();},5000);
-    syncTlayudas();
+    listenarTlay = setInterval(function(){syncTlayudas();},5000);
+    //syncTlayudas();
 }
 
 function syncTlayudas(){
-    alert();
     $.ajax({
         type: "POST",
         url: serverFile,
         data: "fnc=getSyncTlayudas"
     }).done(function(tlay){
-        alert(tlay);
         tlay = JSON.parse(tlay);
         //alert(tlay);
         for(i=0;i<tlay.length;i++){
@@ -85,11 +83,10 @@ function comentarios(){
             url: serverFile,
             data: "fnc=getTlayudaComents&tlays="+tlays
         }).done(function(done){
-            //done = JSON.parse(done);
-            alert(done);
-            /*for(i=0;i<done.length;i++){
-                $('li[tlayuda='+done[i].tlaId+'] span.comments').html('').append(done[i].tipo+' '+done[i].cantidad+' '+done[i].ingrediente);
-            }*/
+            done = JSON.parse(done);
+            for(i=0;i<done.length;i++){
+                $('li[tlayuda='+done[i][0].tlaId+'] span.comments').html('').append(done[i][0].tipo+' '+done[i][0].cantidad+' '+done[i].ingrediente);
+            }
         });
     }
 }
