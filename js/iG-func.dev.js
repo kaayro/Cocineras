@@ -40,7 +40,7 @@ function syncTlayudas(){
                     exists=true;
             });
             if(!exists)
-                $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><table><tr><td rowspan="2"><button class="preparada">Listo</button></td><td>'+tlay[i].producto+'</td><td>Cliente</td><td>Mesero</td><td rowspan="2"><button class="lista">Listo</button></td> </tr><tr><td colspan="3" class="comments"></td></tr></table></li>');
+                $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><table style="width=100%;"><tr><td rowspan="2"><button class="preparada">Listo</button></td><td>'+tlay[i].producto+'</td><td>Cliente</td><td>Mesero</td><td rowspan="2"><button class="lista">Listo</button></td> </tr><tr><td colspan="3" class="comments"></td></tr></table></li>');
         }
     });
 }
@@ -84,6 +84,7 @@ function comentarios(){
             data: "fnc=getTlayudaComents&tlays="+tlays
         }).done(function(done){
             done = JSON.parse(done);
+            alert(done.length);
             for(i=0;i<done.length;i++){
                 $('li[tlayuda='+done[i][0].tlaId+'] td.comments').html('').append(done[i][0].tipo+' '+done[i][0].cantidad+' '+done[i][0].ingrediente);
             }
