@@ -85,7 +85,7 @@ function comentarios(){
         }).done(function(done){
             done = JSON.parse(done);
             for(i=0;i<done.length;i++){
-                $('li[tlayuda='+done[i][0].tlaId+'] span.comments').html('').append(done[i][0].tipo+' '+done[i][0].cantidad+' '+done[i][0].ingrediente);
+                $('li[tlayuda='+done[i][0].tlaId+'] td.comments').html('').append(done[i][0].tipo+' '+done[i][0].cantidad+' '+done[i][0].ingrediente);
             }
         });
     }
