@@ -89,6 +89,7 @@ function comentarios(){
                 for(j=0;j<done[i].length;j++){
                     text += done[i][j].tipo+' '+done[i][j].cantidad+' '+done[i][j].ingrediente+', ';
                 }
+                $('li[tlayuda='+done[i][0].tlaId+'] td.comments').html('').append(text);
             }
             $('li[tlayuda='+done[i][j].tlaId+'] td.comments').html('').append(text);
         });
