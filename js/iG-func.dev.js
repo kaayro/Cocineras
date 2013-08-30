@@ -68,15 +68,24 @@ function calentada(tid,obj){
 }
 
 function comentarios(){
-    $.ajax({
-        type: "POST",
-        url: serverFile,
-        data: "fnc=getTlayudaComents"
-    }).done(function(done){
-        done = JSON.parse(done);
-        alert(done);
-        for(i=0;i<done.length;i++){
-            $('li[tlayuda='+done[i].tlaId+'] span.comments').html('').append(done[i].tipo+' '+done[i].cantidad+' '+done[i].ingrediente);
-        }
+    var tlays = '';
+    $('#home ul li').each(function(i){
+        if(i==0)
+            tlays += $(this).attr('tlayuda');
+        else
+            tlays += ','+$(this).attr('tlayuda');
     });
+    if(tlays!=''){
+        $.ajax({
+            type: "POST",
+            url: serverFile,
+            data: "fnc=getTlayudaComents&tlays="+tlays
+        }).done(function(done){
+            //done = JSON.parse(done);
+            alert(done);
+            /*for(i=0;i<done.length;i++){
+                $('li[tlayuda='+done[i].tlaId+'] span.comments').html('').append(done[i].tipo+' '+done[i].cantidad+' '+done[i].ingrediente);
+            }*/
+        });
+    }
 }
