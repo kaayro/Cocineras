@@ -22,7 +22,7 @@ $(function(){
 function cargarTlayudas(){
     //Obtener Tlayudas Listadas
     listenarTlay = setInterval(function(){syncTlayudas();},5000);
-    //syncTlayudas();
+    syncTlayudas();
 }
 
 function syncTlayudas(){
@@ -84,6 +84,7 @@ function comentarios(){
             data: "fnc=getTlayudaComents&tlays="+tlays
         }).done(function(done){
             done = JSON.parse(done);
+            alert(done);
             for(i=0;i<done.length;i++){
                 $('li[tlayuda='+done[i][0].tlaId+'] span.comments').html('').append(done[i][0].tipo+' '+done[i][0].cantidad+' '+done[i].ingrediente);
             }
