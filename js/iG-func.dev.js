@@ -15,6 +15,7 @@ $(function(){
             calentada(p,$(this));
         }
     });
+    alert();
 });
 
 function cargarTlayudas(){
