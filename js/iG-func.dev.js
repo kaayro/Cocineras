@@ -53,6 +53,7 @@ function preparada(tid,obj){
         data: "fnc=setTlayudaPreparada&tid="+tid
     }).done(function(done){
         if(done==1){
+			alert(done);
             obj.addClass('ready').removeClass('preparada');
         }
     });
