@@ -6,16 +6,16 @@ $(function(){
         //Tlayudas Preparadas
         $(document).hammer().on("tap",'.preparada',function(){
             var p=$(this).parent().attr('tlayuda');
+			alert(p);
             preparada(p,$(this));
         });
         //Tlayudas Listas
         $(document).hammer().on("tap",'.lista',function(){
             isReady=$(this).parent().children('.ready').size();
-			alert(isReady);
-            /*if(isReady>0){
+            if(isReady>0){
                 var p=$(this).parent().attr('tlayuda');
                 calentada(p,$(this));
-            }*/
+            }
         });
     },false);
 });
