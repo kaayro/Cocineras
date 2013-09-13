@@ -65,8 +65,7 @@ function calentada(tid,obj){
         data: "fnc=setTlayudaCalentada&tid="+tid
     }).done(function(done){
         if(done==1){
-			alert(done);
-            obj.parent('li').remove();
+            obj.parents('li').remove();
         }
     });
 }
