@@ -11,9 +11,8 @@ $(function(){
         //Tlayudas Listas
         $(document).hammer().on("tap",'.lista',function(){
             isReady=$(this).parents('li').find('.ready').length;
-			alert(isReady);
             if(isReady>0){
-                var p=$(this).parent().attr('tlayuda');
+                var p=$(this).parents('li').attr('tlayuda');
                 calentada(p,$(this));
             }
         });
@@ -60,7 +59,6 @@ function preparada(tid,obj){
 }
 
 function calentada(tid,obj){
-	alert('Calentada Entra');
     $.ajax({
         type: "POST",
         url: serverFile,
