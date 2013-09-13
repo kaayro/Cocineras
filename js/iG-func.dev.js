@@ -10,7 +10,7 @@ $(function(){
         });
         //Tlayudas Listas
         $(document).hammer().on("tap",'.lista',function(){
-            isReady=$(this).parents('li').children('.ready').length;
+            isReady=$(this).parents('li').find('.ready').length;
 			alert(isReady);
             if(isReady>0){
                 var p=$(this).parent().attr('tlayuda');
