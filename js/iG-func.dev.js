@@ -5,7 +5,7 @@ $(function(){
         listenerComentarios = setInterval(function(){comentarios();},500);
         //Tlayudas Preparadas
         $(document).hammer().on("tap",'.preparada',function(){
-            var p=$(this).parent().attr('tlayuda');
+            var p=$(this).parents('li').attr('tlayuda');
 			alert(p);
             preparada(p,$(this));
         });
@@ -42,7 +42,6 @@ function syncTlayudas(){
             });
             if(!exists)
                 $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><table style="width=100%;"><tr><td rowspan="2"><button class="preparada">Listo</button></td><td>'+tlay[i].producto+'</td><td>Cliente</td><td>Mesero</td><td rowspan="2"><button class="lista">Listo</button></td> </tr><tr><td colspan="3" class="comments"></td></tr></table></li>');
-			alert(tlay[i].tlaId);
         }
     });
 }
