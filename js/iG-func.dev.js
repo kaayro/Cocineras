@@ -2,7 +2,7 @@ var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.
 $(function(){
     document.addEventListener("deviceready",function(){
         cargarTlayudas();
-        listenerComentarios = setInterval(function(){comentarios();},500);
+        listenerComentarios = setInterval(function(){comentarios();},1000);
         //Tlayudas Preparadas
         $(document).hammer().on("tap",'.preparada',function(){
             var p=$(this).parents('li').attr('tlayuda');
@@ -32,11 +32,23 @@ function syncTlayudas(){
         data: "fnc=getSyncTlayudas"
     }).done(function(tlay){
         tlay = JSON.parse(tlay);
-        //alert(tlay);
+        //eliminar inexistentes
+        $('#home ul li').each(function(e){
+            exists=false;
+            for(i=0;i<tlay.length;i++){
+                if($(this).attr('tlayuda')==tlay[i].tlaId){
+                    exists=true;
+                }
+            }
+            if(!exists)
+                $(this).remove();
+        });
+        //agregar nuevos
         for(i=0;i<tlay.length;i++){
             exists=false;
+            obj=null;
             $('#home ul li').each(function(e){
-                if($(this).attr('tlayuda')==tlay[i].tlaId)
+                if($(this).attr('tlayuda')==tlay[i].tlaId){
                     exists=true;
             });
             if(!exists)
@@ -85,8 +97,8 @@ function comentarios(){
             data: "fnc=getTlayudaComents&tlays="+tlays
         }).done(function(done){
             done = JSON.parse(done);
-            var text = '';
             for(i=0;i<done.length;i++){
+                var text = '';
                 for(j=0;j<done[i].length;j++){
                     text += done[i][j].tipo+' '+done[i][j].cantidad+' '+done[i][j].ingrediente+', ';
                 }
