@@ -55,7 +55,7 @@ function syncTlayudas(){
             if(!exists){
 				mesa='';
 				if(tlay[i].tipoMesa==1){mesa=tlay[i].nombre;}else{mesa='Mesa '+tlay[i].mesaId;}
-                $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><table style="width=100%;"><tr><td rowspan="2"><button class="preparada">Listo</button></td><td>'+tlay[i].producto+'</td><td>'+mesa+'</td><td rowspan="2"><button class="lista">Listo</button></td> </tr><tr><td></td><td class="comments"></td><td></td></tr></table></li>');
+                $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><table style="width=100%;"><tr><td rowspan="2"><button class="preparada">Listo</button></td><td>'+tlay[i].producto+'</td><td>'+mesa+'</td><td rowspan="2"><button class="lista">Listo</button></td> </tr><tr><td></td><td colspan="2" class="comments"></td><td></td></tr></table></li>');
 			}
         }
     });
