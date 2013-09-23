@@ -52,8 +52,12 @@ function syncTlayudas(){
                     exists=true;
                 }
             });
-            if(!exists)
-                $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><table style="width=100%;"><tr><td rowspan="2"><button class="preparada">Listo</button></td><td>'+tlay[i].producto+'</td><td>Cliente</td><td>Mesero</td><td rowspan="2"><button class="lista">Listo</button></td> </tr><tr><td colspan="3" class="comments"></td></tr></table></li>');
+            if(!exists){
+				mesa='';
+				alert(tlay[i].tipoMesa);
+				if(tlay[i].tipoMesa==1){mesa=tlay[i].nombre;}else{mesa='Mesa '+tlay[i].mesaId;}
+                $('#home ul').append('<li tlayuda="'+tlay[i].tlaId+'"><table style="width=100%;"><tr><td rowspan="2"><button class="preparada">Listo</button></td><td>'+tlay[i].producto+'</td><td>'+mesa+'</td><td rowspan="2"><button class="lista">Listo</button></td> </tr><tr><td colspan="3" class="comments"></td></tr></table></li>');
+			}
         }
     });
 }
