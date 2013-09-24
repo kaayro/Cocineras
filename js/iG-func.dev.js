@@ -1,4 +1,4 @@
-var serverFile='http://192.168.1.69/carlos/APPS/mitierraoaxaca/Web/fnc/ajaxfnc2.php';
+var serverFile='http://192.168.1.123/Web/fnc/ajaxfnc2.php';
 $(function(){
     document.addEventListener("deviceready",function(){
         cargarTlayudas();
